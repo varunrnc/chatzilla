@@ -1,47 +1,94 @@
 /*google font */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-
 html, body {
     font-family: 'Lato', sans-serif;
 }
-
 body {
-     background-color: #8EC5FC;
-background-image: -webkit-linear-gradient(152deg, #8EC5FC 0%, #E0C3FC 100%);
-background-image: -o-linear-gradient(152deg, #8EC5FC 0%, #E0C3FC 100%);
-background-image: linear-gradient(242deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-color: #8EC5FC;
+    background-image: -webkit-linear-gradient(152deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-image: -o-linear-gradient(152deg, #8EC5FC 0%, #E0C3FC 100%);
+    background-image: linear-gradient(242deg, #8EC5FC 0%, #E0C3FC 100%);
 }
-
 a {
     text-decoration: none;
 }
-
-.container .login-box,
-.container .register-box {
+ul {
+    list-style: none;
+}
+.container .login-box, .container .register-box {
     max-width: 33rem;
     border-radius: 0.6rem;
     box-shadow: 0px 1px 8px 1px rgba(0,0,0,0.5);
 }
-
 .container .login-box {
     height: 30rem;
     margin: 5rem auto;
 }
-
 .container .register-box {
     height: 42rem;
     margin: 2rem auto;
 }
-
-.login-box button,
-.register-box button{
+.login-box button, .register-box button {
     font-size: 1.2rem;
 }
-
-.login-box span,
-.register-box span{
+.login-box span, .register-box span {
     font-size: 1.2rem;
     display: block;
     text-align: center;
 }
+.sidebar {
+    width: 300px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: burlywood;
+    z-index: 100;
+    transition: width .3s ease-in-out;/*    display: none;*/
+}
+.main-content {
+    margin-left: 300px;
+    transition: width .3s ease-in-out;
+}
+header {
+    position: fixed;
+    left: 300px;
+    width: calc(100% - 300px);
+    top: 0;
+    z-index: 100;
+    box-shadow: 1px 0px 1px 1px rgba(0,0,0,0.5);
+    transition: left .3s ease-in-out;
+}
 
+header span .fas {
+    font-size: 1.5rem;
+}
+#nav-toggle:checked + .sidebar {
+    width: 70px;
+}
+#nav-toggle:checked ~ .main-content {
+    margin-left: 70px;
+}
+#nav-toggle:checked ~ .main-content header {
+    width: calc(100% - 70px);
+    left: 70px;
+}
+
+#nav-toggle:checked + .sidebar .logo-container h2 span:last-child,
+#nav-toggle:checked + .sidebar .sidebar-menu ul li a span:last-child{
+    display: none;
+}
+
+
+@media only screen and (max-width: 900px) {
+.sidebar {
+    width: 70px;
+}
+.main-content {
+    margin-left: 70px;
+}
+.main-content header {
+    width: calc(100% - 70px);
+    left: 70px;
+}
+}
