@@ -1,6 +1,6 @@
 <?php
 
-$hostname = "http://127.0.0.1/chatzilla/";
+$hostname = "http://127.0.0.1/chatzilla";
 
 $server = '127.0.0.1';
 $user = 'root';

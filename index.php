@@ -1,5 +1,35 @@
 <?php
+ob_start();
 include_once( 'config.php' );
+session_start();
+if(isset($_SESSION['username']))
+{
+    header('location: ' . $hostname . '/dashboard.php');
+} 
+
+if(isset($_POST['submit']))
+{
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $password = md5($password);
+    
+    $query = "SELECT username, password FROM users WHERE username = '{$username}' AND password = '{$password}'";
+    $result = $conn->query($query) or die("Query Failed!");
+    
+    if($result->num_rows > 0)
+    {
+        $row = $result->fetch_assoc();
+        $_SESSION['username'] = $row['username'];
+        header('location: ' . $hostname . '/dashboard.php');
+    } else {
+         ?>
+    <script>
+        alert("Invalid Username or Password!");
+        window.location = 'http://localhost/chatzilla/index.php';
+    </script>
+    <?php
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -28,22 +58,22 @@ include_once( 'config.php' );
         <div class="login-box bg-light p-4">
             <h1>Login</h1>
             <hr>
-            <div class="mb-3">
+            <form action="<?php echo $_SERVER['PHP_SELF'] ; ?>" method="POST">
+                <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username">
+                <input type="text" class="form-control" name="username" id="username" autocomplete="off" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" name="password" id="password" required>
             </div>
             <div class="d-grid">
-                <button type="button" class="btn btn-primary my-3">Login</button>
+                <button type="submit" name="submit" class="btn btn-primary my-3">Login</button>
             </div>
-            <span>Not a member? <a href="#">Signup</a></span>
+            </form>
+            <span>Not a member? <a href="<?php echo $hostname . "/register.php" ; ?>">Signup</a></span>
         </div>
     </div>
-
-
 
 
 

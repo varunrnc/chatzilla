@@ -16,19 +16,30 @@ a {
     text-decoration: none;
 }
 
-.container .login-box {
-    max-width: 30rem;
-    height: 30rem;
+.container .login-box,
+.container .register-box {
+    max-width: 33rem;
     border-radius: 0.6rem;
     box-shadow: 0px 1px 8px 1px rgba(0,0,0,0.5);
+}
+
+.container .login-box {
+    height: 30rem;
     margin: 5rem auto;
 }
 
-.login-box button {
+.container .register-box {
+    height: 42rem;
+    margin: 2rem auto;
+}
+
+.login-box button,
+.register-box button{
     font-size: 1.2rem;
 }
 
-.login-box span{
+.login-box span,
+.register-box span{
     font-size: 1.2rem;
     display: block;
     text-align: center;
