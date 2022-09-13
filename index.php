@@ -13,13 +13,16 @@ if(isset($_POST['submit']))
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $password = md5($password);
     
-    $query = "SELECT username, password FROM users WHERE username = '{$username}' AND password = '{$password}'";
+    $query = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
     $result = $conn->query($query) or die("Query Failed!");
     
     if($result->num_rows > 0)
     {
         $row = $result->fetch_assoc();
         $_SESSION['username'] = $row['username'];
+        $_SESSION['first_name'] = $row['first_name'];
+        $_SESSION['last_name'] = $row['last_name'];
+        $_SESSION['mobile'] = $row['mobile'];
         header('location: ' . $hostname . '/dashboard.php');
     } else {
          ?>

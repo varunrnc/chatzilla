@@ -11,9 +11,12 @@ body {
 }
 a {
     text-decoration: none;
+    color: #000;
 }
 ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 .container .login-box, .container .register-box {
     max-width: 33rem;
@@ -42,7 +45,9 @@ ul {
     left: 0;
     top: 0;
     height: 100%;
-    background-color: burlywood;
+    /*    background-color: burlywood;*/
+    background-color: #8BC6EC;
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
     z-index: 100;
     transition: width .3s ease-in-out;/*    display: none;*/
 }
@@ -60,6 +65,9 @@ header {
     transition: left .3s ease-in-out;
 }
 
+.main-content header button a {
+    color: #fff;
+}
 header span .fas {
     font-size: 1.5rem;
 }
@@ -73,16 +81,33 @@ header span .fas {
     width: calc(100% - 70px);
     left: 70px;
 }
-
-#nav-toggle:checked + .sidebar .logo-container h2 span:last-child,
-#nav-toggle:checked + .sidebar .sidebar-menu ul li a span:last-child{
+#nav-toggle:checked + .sidebar .logo-container h2 span:last-child, #nav-toggle:checked + .sidebar .sidebar-menu ul li a span:last-child {
     display: none;
 }
-
+.sidebar .sidebar-menu ul {
+/*    background-color: blue;*/
+}
+.sidebar .sidebar-menu ul li {
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+}
+.sidebar .sidebar-menu ul li a {
+    font-size: 1.6rem;
+    color: #000;
+    transition: all .2s ease-in-out;
+}
+.sidebar .sidebar-menu ul li a.active {
+    color: #00326A;
+}
+.sidebar .sidebar-menu ul li a:hover {
+    color: #00326A;
+}
 
 @media only screen and (max-width: 900px) {
 .sidebar {
     width: 70px;
+}
+.sidebar .logo-container h2 span:last-child,  .sidebar .sidebar-menu ul li a span:last-child {
+    display: none;
 }
 .main-content {
     margin-left: 70px;

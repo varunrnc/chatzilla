@@ -8,8 +8,6 @@ if ( !isset( $_SESSION[ 'username' ] ) ) {
 
 
 ?>
-<!--<a href="<?php echo $hostname . '/logout.php' ; ?>">Logout</a>-->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,22 +30,22 @@ if ( !isset( $_SESSION[ 'username' ] ) ) {
 </head>
 
 <body>
-    
+
     <div class="container-fluid">
         <input type="checkbox" id="nav-toggle">
         <div class="sidebar">
-            <div class="logo-container">
-                <h2><span>CH</span><span>Chatzilla</span></h2>
+            <div class="logo-container p-2">
+                <h2><span class="p-2"><i class="fas fa-sms"></i></span><span>Chatzilla</span></h2>
             </div>
-            <div class="sidebar-menu">
+            <div class="sidebar-menu my-5">
                 <ul>
-                    <li><a href="#"><span><i class="fas fa-user-circle"></i></span><span>Profile</span></a>
+                    <li class="p-2 my-1"><a href="dashboard.php" class="active"><span><i class="fas fa-user-circle"></i></span><span class="px-2">Profile</span></a>
                     </li>
-                    <li><a href="#"><span><i class="fas fa-user-circle"></i></span><span>Profile</span></a>
+                    <li class="p-2 my-1"><a href="compose.php"><span><i class="fas fa-pencil-alt"></i></span><span class="px-2">Compose</span></a>
                     </li>
-                    <li><a href="#"><span><i class="fas fa-user-circle"></i></span><span>Profile</span></a>
+                    <li class="p-2 my-1"><a href="inbox.php"><span><i class="fas fa-envelope-open-text"></i></span><span class="px-2">Inbox</span></a>
                     </li>
-                    <li><a href="#"><span><i class="fas fa-user-circle"></i></span><span>Profile</span></a>
+                    <li class="p-2 my-1"><a href="sent.php"><span><i class="fas fa-paper-plane"></i></span><span class="px-2">Sent</span></a>
                     </li>
                 </ul>
             </div>
@@ -58,13 +56,37 @@ if ( !isset( $_SESSION[ 'username' ] ) ) {
                 <label for="nav-toggle">
                 <span><i class="fas fa-bars"></i></span>
             </label>
-                
             
-                <h2>Welcome Varun</h2>
+
+
+                <h2>Welcome, <?php echo $_SESSION['first_name']; ?> </h2>
                 <button type="button" class="btn btn-danger btn-sm"><a href="logout.php">Logout</a></button>
             </header>
             <main class="my-5">
                 <h3>Profile</h3>
+                <div class="table-responsive my-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">SN</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Mobile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><?php echo $_SESSION['username']; ?></td>
+                                <td><?php echo $_SESSION['first_name']; ?></td>
+                                <td><?php echo $_SESSION['last_name']; ?></td>
+                                <td><?php echo $_SESSION['mobile']; ?></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
             </main>
         </div>
     </div>
