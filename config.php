@@ -7,7 +7,7 @@ $user = 'root';
 $password = '';
 $db_name = 'chatdb';
 
-$conn = new mysqli($server, $user, $password, $db_name);
+$conn = new mysqli($server, $user, $password, $db_name, '3306');
 
 if($conn->connect_error) {
     die("Connection Failed!" . $conn->connect_error);
